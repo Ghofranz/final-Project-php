@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tables - My Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
+</head>
+
+<body>
+    <div class="layout">
+        <!-- Sidebar chargée côté client -->
+        <div id="sidebar-container"></div>
+
+        <!-- MAIN CONTENT -->
+        <main class="content">
+            <div class="page-header-wrapper">
+                <header class="page-header">
+                    <div class="crumbs">Pages / <span>Tables</span></div>
+                    <h1 class="page-title">Gestion des commandes</h1>
+
+                    <div class="topbar__right">
+                        <div class="search">
+                            <input type="text" placeholder="Rechercher...">
+                        </div>
+                        <div class="user-menu">
+                            <span>👤</span>
+                            <span id="user-full-name"></span>
+                        </div>
+                    </div>
+                </header>
+            </div>
+
+            <div class="main-content">
+                <!-- Filter Bar -->
+                <div class="filter-bar">
+                    <input type="text" id="searchInput" placeholder="Rechercher (ID, client, produit)...">
+                    <select id="statusFilter">
+                        <option value="all">Tous les statuts</option>
+                        <option value="Delivered">Livré</option>
+                        <option value="Processing">En cours</option>
+                        <option value="Pending">En attente</option>
+                        <option value="Cancelled">Annulé</option>
+                    </select>
+                    <button id="filterBtn" class="btn btn-primary">
+                        <span>⚡</span> Filtrer
+                    </button>
+                    <a href="api/export.php?type=orders" class="btn btn-outline">
+                        <span>📥</span> Export CSV
+                    </a>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="table-container">
+                    <div class="table-header">
+                        <div>
+                            <h2>Liste des commandes</h2>
+                            <p>Données chargées depuis MySQL via AJAX</p>
+                        </div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 40px;">
+                                    <input type="checkbox" id="selectAll">
+                                </th>
+                                <th data-sort="id">ID</th>
+                                <th data-sort="customer">Client</th>
+                                <th data-sort="product">Produit</th>
+                                <th data-sort="amount">Montant</th>
+                                <th data-sort="status">Statut</th>
+                                <th data-sort="order_date">Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <tr>
+                                <td colspan="8" class="loading">
+                                    <div class="spinner"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="pagination">
+                        <div class="pagination-info" id="rowsInfo">
+                            Chargement...
+                        </div>
+                        <div class="pagination-buttons">
+                            <button class="page-btn" id="prevPage" disabled>Précédent</button>
+                            <div id="paginationPages"></div>
+                            <button class="page-btn" id="nextPage" disabled>Suivant</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Modal -->
+            <div id="editOrderModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Modifier la commande</h2>
+                        <button class="modal-close" onclick="App.closeModal('editOrderModal')">&times;</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editCustomer">Client</label>
+                        <input type="text" id="editCustomer" placeholder="Nom du client">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editProduct">Produit</label>
+                        <input type="text" id="editProduct" placeholder="Nom du produit">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editAmount">Montant ($)</label>
+                        <input type="number" id="editAmount" min="0" step="0.01">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editStatus">Statut</label>
+                        <select id="editStatus">
+                            <option value="Pending">En attente</option>
+                            <option value="Processing">En cours</option>
+                            <option value="Delivered">Livré</option>
+                            <option value="Cancelled">Annulé</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editDate">Date</label>
+                        <input type="date" id="editDate">
+                    </div>
+
+                    <div class="modal-actions">
+                        <button id="cancelEdit" class="btn btn-outline">Annuler</button>
+                        <button id="saveEdit" class="btn btn-primary">Sauvegarder</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/tables.js"></script>
+</body>
+
+</html>

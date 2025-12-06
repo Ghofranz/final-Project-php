@@ -1,0 +1,228 @@
+
+    .profile-header-wrapper {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 28px 36px 0;
+        position: relative;
+        height: 320px;
+    }
+
+    .profile-card-wrapper {
+        margin-top: -180px;
+        padding: 0 36px 36px;
+        position: relative;
+        z-index: 5;
+    }
+
+    .profile-card {
+        background: white;
+        border-radius: 20px;
+        padding: 32px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: grid;
+        place-items: center;
+        font-size: 48px;
+        box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+        flex-shrink: 0;
+        color: white;
+        font-weight: 700;
+    }
+
+    .profile-info {
+        flex: 1;
+        padding-top: 8px;
+    }
+
+    .profile-name {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .profile-role {
+        font-size: 15px;
+        color: var(--muted);
+        font-weight: 500;
+        margin-bottom: 24px;
+    }
+
+    .profile-stats {
+        display: flex;
+        gap: 48px;
+        margin-top: 20px;
+    }
+
+    .stat {
+        text-align: center;
+    }
+
+    .stat-value {
+        font-size: 24px;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .stat-label {
+        font-size: 13px;
+        color: var(--muted);
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .profile-actions {
+        display: flex;
+        gap: 12px;
+        margin-left: auto;
+        padding-top: 8px;
+    }
+
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 28px;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .form-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        font-size: 14px;
+        font-family: inherit;
+        transition: all 0.2s;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.1);
+    }
+
+    .project-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 0;
+        border-bottom: 1px solid #f0f2f5;
+    }
+
+    .project-item:last-child {
+        border-bottom: none;
+    }
+
+    .project-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        flex-shrink: 0;
+    }
+
+    .project-icon.blue {
+        background: linear-gradient(135deg, #4dabf7 0%, #339af0 100%);
+    }
+
+    .project-icon.green {
+        background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%);
+    }
+
+    .project-icon.orange {
+        background: linear-gradient(135deg, #ff922b 0%, #fd7e14 100%);
+    }
+
+    .project-icon.purple {
+        background: linear-gradient(135deg, #845ef7 0%, #7048e8 100%);
+    }
+
+    .project-info {
+        flex: 1;
+    }
+
+    .project-name {
+        font-weight: 600;
+        font-size: 15px;
+        margin-bottom: 4px;
+    }
+
+    .project-members {
+        font-size: 13px;
+        color: var(--muted);
+    }
+
+    .project-budget {
+        font-weight: 700;
+        font-size: 16px;
+        margin-left: auto;
+    }
+
+    @media (max-width: 1024px) {
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .profile-card {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-actions {
+            margin-left: 0;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .profile-stats {
+            justify-content: center;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .alert {
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        font-size: 14px;
+        display: none;
+    }
+
+    .alert-success {
+        background: #d1fae5;
+        color: #065f46;
+    }
+
+    .alert-error {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+    

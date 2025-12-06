@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard - My Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+
+<body>
+    <div class="layout">
+        <?php include 'includes/sidebar.php'; ?>
+
+        <!-- MAIN CONTENT -->
+        <main class="content">
+            <div class="page-header-wrapper">
+                <header class="page-header">
+                    <div class="crumbs">Pages / <span>Dashboard</span></div>
+                    <h1 class="page-title">Dashboard</h1>
+
+                    <div class="topbar__right">
+                        <div class="search">
+                            <input type="text" placeholder="Rechercher...">
+                        </div>
+                        <div class="user-menu">
+                            <span>👤</span>
+                            <?php echo htmlspecialchars($user['full_name']); ?>
+                        </div>
+                    </div>
+                </header>
+            </div>
+
+            <div class="main-content">
+                <!-- Status Indicator -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <div class="status-indicator online">
+                        Connecté en temps réel
+                    </div>
+                    <div class="refresh-indicator">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 4v6h-6M1 20v-6h6" />
+                            <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
+                        </svg>
+                        Dernière mise à jour: <span id="lastRefresh">--:--:--</span>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <path d="M3 9h18M9 21V9" />
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">REVENUS TOTAUX</div>
+                            <div class="stat-value" id="statRevenue">$0</div>
+                            <div class="stat-change positive">Mis à jour en temps réel</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon red">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 3h18a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1z" />
+                                <path d="M3 9h18M9 21V9" />
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">TOTAL COMMANDES</div>
+                            <div class="stat-value" id="statOrders">0</div>
+                            <div class="stat-change positive">Depuis la base de données</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4" />
+                                <path d="M3 21a9 9 0 0118 0" />
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">NOUVEAUX CLIENTS</div>
+                            <div class="stat-value" id="statClients">+0</div>
+                            <div class="stat-change negative">Clients uniques</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-label">COMMANDE MOYENNE</div>
+                            <div class="stat-value" id="statAvgOrder">$0</div>
+                            <div class="stat-change positive">Calculé automatiquement</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Grid -->
+                <div class="bottom-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Activité récente</h2>
+                            <p class="muted">Dernières actions enregistrées</p>
+                        </div>
+
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon purple">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M3 3h18a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1zm6 2v14h9V5H9zM4 5v3h4V5H4zm0 5v3h4v-3H4zm0 5v3h4v-3H4z" />
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Nouvelle commande #---</div>
+                                    <div class="activity-time">Chargement...</div>
+                                </div>
+                                <div class="activity-amount positive">+$0</div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon blue">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Utilisateur connecté</div>
+                                    <div class="activity-time"><?php echo htmlspecialchars($user['full_name']); ?></div>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon green">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Données synchronisées</div>
+                                    <div class="activity-time">PHP + MySQL</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Actions rapides</h2>
+                        </div>
+
+                        <div class="quick-actions">
+                            <button id="newOrderBtn" class="action-btn primary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                                Nouvelle commande
+                            </button>
+
+                            <a href="api/export.php?type=orders" id="exportDataBtn" class="action-btn secondary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                                    <path d="M14 2v6h6M16 13H8m8 4H8m2-8H8" />
+                                </svg>
+                                Exporter CSV
+                            </a>
+
+                            <a href="statistics.php" class="action-btn secondary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 3v18h18" />
+                                    <path d="M18 17V9M13 17V5M8 17v-3" />
+                                </svg>
+                                Voir les statistiques
+                            </a>
+
+                            <button id="syncBtn" class="action-btn secondary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 4v6h-6M1 20v-6h6" />
+                                    <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
+                                </svg>
+                                Synchroniser
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Nouvelle Commande -->
+            <div id="newOrderModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Nouvelle commande</h2>
+                        <button class="modal-close" onclick="App.closeModal('newOrderModal')">&times;</button>
+                    </div>
+
+                    <form id="newOrderForm">
+                        <div class="form-group">
+                            <label for="orderCustomer">Client *</label>
+                            <input type="text" id="orderCustomer" name="customer" placeholder="Nom du client" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="orderProduct">Produit *</label>
+                            <input type="text" id="orderProduct" name="product" placeholder="Nom du produit" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="orderAmount">Montant ($)</label>
+                            <input type="number" id="orderAmount" name="amount" min="0" step="0.01" placeholder="0.00">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="orderStatus">Statut</label>
+                            <select id="orderStatus" name="status">
+                                <option value="Pending">En attente</option>
+                                <option value="Processing">En cours</option>
+                                <option value="Delivered">Livré</option>
+                                <option value="Cancelled">Annulé</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="orderDate">Date</label>
+                            <input type="date" id="orderDate" name="order_date">
+                        </div>
+
+                        <div class="modal-actions">
+                            <button type="button" id="cancelNewOrder" class="btn btn-outline">Annuler</button>
+                            <button type="submit" class="btn btn-primary">Créer la commande</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

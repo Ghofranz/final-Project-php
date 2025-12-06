@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Statistiques - My Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/statistics.css">
+    <!-- Chart.js local / CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="layout">
+        <!-- Sidebar chargée côté client -->
+        <div id="sidebar-container"></div>
+
+        <!-- MAIN CONTENT -->
+        <main class="content">
+            <div class="page-header-wrapper">
+                <header class="page-header">
+                    <div class="crumbs">Pages / <span>Statistiques</span></div>
+                    <h1 class="page-title">Statistiques</h1>
+
+                    <div class="topbar__right">
+                        <div class="search">
+                            <input type="text" placeholder="Rechercher...">
+                        </div>
+                        <div class="user-menu">
+                            <span>👤</span>
+                            <span id="user-full-name"></span>
+                        </div>
+                    </div>
+                </header>
+            </div>
+
+            <div class="main-content">
+                <!-- Auto Refresh Indicator -->
+                <div class="auto-refresh active" id="autoRefreshIndicator">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 4v6h-6M1 20v-6h6" />
+                        <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
+                    </svg>
+                    <span>Rafraîchissement automatique toutes les 10 secondes</span>
+                    <span>Dernière mise à jour: <strong id="lastRefreshTime">--:--:--</strong></span>
+                    <button class="auto-refresh-toggle active" id="autoRefreshToggle">Actif</button>
+                </div>
+
+                <!-- Key Metrics -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-icon purple">💰</div>
+                            <div class="metric-info">
+                                <div class="label">REVENUS</div>
+                                <div class="value" id="statsRevenueValue">$0</div>
+                            </div>
+                        </div>
+                        <div class="metric-change positive">
+                            ↑ Calculé depuis MySQL
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-icon blue">📦</div>
+                            <div class="metric-info">
+                                <div class="label">COMMANDES</div>
+                                <div class="value" id="statsOrdersValue">0</div>
+                            </div>
+                        </div>
+                        <div class="metric-change positive">
+                            ↑ Total des commandes
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-icon green">👥</div>
+                            <div class="metric-info">
+                                <div class="label">CLIENTS</div>
+                                <div class="value" id="statsClientsValue">0</div>
+                            </div>
+                        </div>
+                        <div class="metric-change positive">
+                            ↑ Clients uniques
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <div class="metric-icon orange">🛒</div>
+                            <div class="metric-info">
+                                <div class="label">PANIER MOYEN</div>
+                                <div class="value" id="statsAvgOrderValue">$0</div>
+                            </div>
+                        </div>
+                        <div class="metric-change negative">
+                            Moyenne par commande
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row 1 -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Tendance des revenus</h3>
+                            <p>Performance mensuelle sur 6 mois</p>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Utilisateurs actifs</h3>
+                            <p>Croissance par mois</p>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="usersChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row 2 -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Commandes par statut</h3>
+                            <p>Répartition des statuts (données dynamiques PHP)</p>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="categoriesChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Sources de trafic</h3>
+                            <p>D'où viennent les visiteurs</p>
+                        </div>
+                        <div class="progress-list">
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span class="progress-label">Recherche organique</span>
+                                    <span class="progress-value">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill purple" style="width: 45%"></div>
+                                </div>
+                            </div>
+
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span class="progress-label">Réseaux sociaux</span>
+                                    <span class="progress-value">30%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill blue" style="width: 30%"></div>
+                                </div>
+                            </div>
+
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span class="progress-label">Trafic direct</span>
+                                    <span class="progress-value">15%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill green" style="width: 15%"></div>
+                                </div>
+                            </div>
+
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span class="progress-label">Email marketing</span>
+                                    <span class="progress-value">10%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill orange" style="width: 10%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row 3 - Dynamic -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Commandes cette semaine</h3>
+                            <p>Données dynamiques depuis PHP/MySQL</p>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="ordersWeekChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Commandes ce mois</h3>
+                            <p>Évolution journalière depuis la base de données</p>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="usersMonthChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Export Section -->
+                <div class="card" style="margin-top: 24px;">
+                    <div class="card-header">
+                        <h2>Export des données</h2>
+                        <p class="muted">Téléchargez vos données au format CSV</p>
+                    </div>
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="api/export.php?type=orders" class="btn btn-primary">
+                            📥 Exporter les commandes
+                        </a>
+                        <a href="api/export.php?type=statistics" class="btn btn-outline">
+                            📊 Exporter les statistiques
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/statistics.js"></script>
+</body>
+
+</html>

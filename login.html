@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connexion - My Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="login-logo">📊</div>
+            <h1>My Dashboard</h1>
+            <p>Connectez-vous pour accéder à votre espace</p>
+        </div>
+        
+        <?php if ($error): ?>
+            <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
+        <?php endif; ?>
+        
+        <?php if ($success): ?>
+            <div class="success-message"><?php echo htmlspecialchars($success); ?></div>
+        <?php endif; ?>
+        
+        <form method="POST" action="login.php" id="loginForm">
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur ou Email</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Entrez votre identifiant"
+                    required
+                    value="<?php echo htmlspecialchars($_POST['username'] ?? ''); ?>"
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Entrez votre mot de passe"
+                    required
+                >
+            </div>
+            
+            <button type="submit" class="btn-login">Se connecter</button>
+        </form>
+        
+        <div class="demo-credentials">
+            <strong>Identifiants de démonstration :</strong><br>
+            Utilisateur : <code>admin</code> ou <code>ghofran</code><br>
+            Mot de passe : <code>password</code>
+        </div>
+    </div>
+    
+    <script>
+        // Validation côté client
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                e.preventDefault();
+                alert('Veuillez remplir tous les champs.');
+            }
+        });
+    </script>
+</body>
+</html>

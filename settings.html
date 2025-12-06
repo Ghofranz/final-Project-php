@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paramètres - My Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/settings.css">
+</head>
+
+<body>
+    <div class="layout">
+        <!-- Sidebar chargée côté client -->
+        <div id="sidebar-container"></div>
+
+        <main class="content">
+            <div class="page-header-wrapper">
+                <header class="page-header">
+                    <div class="crumbs">Pages / <span>Paramètres</span></div>
+                    <h1 class="page-title">Paramètres</h1>
+                    <div class="topbar__right">
+                        <div class="search">
+                            <input type="text" placeholder="Rechercher...">
+                        </div>
+                        <div class="user-menu">
+                            <span>👤</span>
+                            <span id="user-full-name"></span>
+                        </div>
+                    </div>
+                </header>
+            </div>
+
+            <div class="main-content settings-page">
+                <div id="settings-message" class="alert" style="display:none;"></div>
+
+                <!-- Account Settings -->
+                <div class="card">
+                    <div class="card-header card-header-with-icon">
+                        <div class="card-header-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4" />
+                                <path d="M3 21a9 9 0 0118 0" />
+                            </svg>
+                        </div>
+                        <h2>Compte</h2>
+                    </div>
+
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Authentification à deux facteurs</h3>
+                                <p>Protégez votre compte avec la 2FA</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Connexion automatique</h3>
+                                <p>Rester connecté sur cet appareil</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <form id="password-form" class="form-section">
+                        <div class="form-section-title">Changer le mot de passe</div>
+                        <div class="form-group">
+                            <input type="password" name="current_password" class="form-input"
+                                placeholder="Mot de passe actuel">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="new_password" class="form-input"
+                                placeholder="Nouveau mot de passe">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="confirm_password" class="form-input"
+                                placeholder="Confirmer le mot de passe">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                    </form>
+                </div>
+
+                <!-- Notifications -->
+                <div class="card">
+                    <div class="card-header card-header-with-icon">
+                        <div class="card-header-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
+                            </svg>
+                        </div>
+                        <h2>Notifications</h2>
+                    </div>
+
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Notifications par email</h3>
+                                <p>Recevoir les notifications par email</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Notifications push</h3>
+                                <p>Recevoir les notifications du navigateur</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Alertes de sécurité</h3>
+                                <p>Être notifié des activités suspectes</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appearance -->
+                <div class="card">
+                    <div class="card-header card-header-with-icon">
+                        <div class="card-header-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
+                            </svg>
+                        </div>
+                        <h2>Apparence</h2>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-title">Thème</div>
+                        <div class="theme-grid">
+                            <div class="theme-option" data-theme="dark">
+                                <div class="theme-icon">🌙</div>
+                                <div class="theme-name">Sombre</div>
+                            </div>
+                            <div class="theme-option active" data-theme="light">
+                                <div class="theme-icon">☀️</div>
+                                <div class="theme-name">Clair</div>
+                            </div>
+                            <div class="theme-option" data-theme="auto">
+                                <div class="theme-icon">⚙️</div>
+                                <div class="theme-name">Auto</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-title">Couleur d'accent</div>
+                        <div class="color-grid">
+                            <div class="color-option color-purple active" data-color="purple"></div>
+                            <div class="color-option color-blue" data-color="blue"></div>
+                            <div class="color-option color-green" data-color="green"></div>
+                            <div class="color-option color-red" data-color="red"></div>
+                            <div class="color-option color-orange" data-color="orange"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Danger Zone -->
+                <div class="card">
+                    <div class="card-header card-header-with-icon card-header-danger">
+                        <div class="card-header-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <h2>Zone de danger</h2>
+                    </div>
+
+                    <div class="form-section">
+                        <p class="danger-text">
+                            La suppression de votre compte est irréversible. Toutes vos données seront perdues.
+                        </p>
+                        <button class="btn btn-danger"
+                            onclick="alert('Cette fonctionnalité est désactivée pour la démo.')">
+                            🗑️ Supprimer mon compte
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script><!--l ordre est obligatoire app>search>settings-->
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/settings.js"></script>
+</body>
+
+</html>
