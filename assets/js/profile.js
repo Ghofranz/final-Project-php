@@ -74,9 +74,8 @@ async function loadProfile() {
         const sinceEl  = document.getElementById('stat-member-since');
 
         if (ordersEl) ordersEl.textContent = stats.orders_count;
-        if (amountEl) amountEl.textContent =
-            '$' + Math.round(stats.total_amount).toLocaleString('en-US');
-
+        if (amountEl)amountEl.textContent =
+        Math.round(stats.total_amount).toLocaleString('fr-FR') + ' DT';
         const date = new Date(user.created_at);
         if (sinceEl) {
             sinceEl.textContent =

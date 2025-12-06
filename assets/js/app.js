@@ -214,7 +214,7 @@ const App = {
             style: 'currency',
             currency: 'TND',
             minimumFractionDigits: 2
-        }).format(amount).replace('TND', '$');
+        }).format(amount).replace('TND', 'DT');
     },
 
     /**

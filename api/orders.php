@@ -1,7 +1,7 @@
 <?php
 /**
  * API PHP pour la gestion des commandes
- * Communication JavaScript <-> PHP via AJAX natif
+ * communication JS <-> PHP via AJAX natif
  */
 require_once '../config/database.php';
 
