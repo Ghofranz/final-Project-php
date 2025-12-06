@@ -1,7 +1,7 @@
 # Dashboard PHP – Gestion des commandes (PHP / MySQL / AJAX)
 
 Application de tableau de bord en PHP avec authentification par sessions, gestion de commandes MySQL, profils utilisateurs, statistiques dynamiques et graphiques Chart.js.  
-Frontend en HTML/CSS/JS (Fetch API) et backend en PHP 8 + PDO/MySQL. :contentReference[oaicite:0]{index=0}
+Frontend en HTML/CSS/JS (Fetch API) et backend en PHP 8 + PDO/MySQL. 
 
 ---
 
