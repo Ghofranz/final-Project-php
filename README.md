@@ -1,4 +1,4 @@
-# Dashboard PHP – Gestion des commandes (PHP / MySQL / AJAX)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5c631a13-e692-4eb5-97d4-43faeef3801c" /># Dashboard PHP – Gestion des commandes (PHP / MySQL / AJAX)
 
 Application de tableau de bord en PHP avec authentification par sessions, gestion de commandes MySQL, profils utilisateurs, statistiques dynamiques et graphiques Chart.js.  
 Frontend en HTML/CSS/JS (Fetch API) et backend en PHP 8 + PDO/MySQL. 
@@ -99,16 +99,42 @@ project-root/
 ├── tables.html             # Vue Tables / Liste des commandes
 │
 └── README.md               # (ce fichier)
+
 📸 Screenshots
-<img width="1842" height="951" alt="image" src="https://github.com/user-attachments/assets/3b947831-c33f-4b70-942a-907fc56efa12" />
-<img width="1839" height="949" alt="image" src="https://github.com/user-attachments/assets/a61c0cf0-6f5b-4ffd-a412-ae5cca1b6ab0" />
-<img width="1841" height="948" alt="image" src="https://github.com/user-attachments/assets/e626e8f7-cd90-4038-83f6-df537061d671" />
-<img width="1396" height="933" alt="image" src="https://github.com/user-attachments/assets/e7759df4-dd9e-4b3a-8c06-300e055d1a26" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/212473ee-af5f-48f4-bbef-202a35ca706c" />
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/73b9147e-a655-4927-aa9d-8ddfd8cf4f17" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/523e24db-93eb-4093-a724-68f5ae899f24" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/edadc651-0ef3-466a-8692-c8dfd596786e" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8193c4b5-30e9-437b-99aa-0b121f665c7a" /><img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/95913d70-5eb6-4700-b570-9f1970714b1d" />
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9cd8dbb1-8508-403d-a773-ece2c6e98fde" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/632a13b4-6399-4eed-9128-7a9edc10dae8" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2140b271-0a56-45ac-ab13-12e3ffae0777" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4e85c228-4842-4262-bf1a-b636afdb1939" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e50ff6cb-ae3a-4bc2-a52c-cb5cf75af376" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/91f33900-beeb-403d-94a3-827d0ccc78f8" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3db5760e-d17d-43e1-a9fd-8393421108cd" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4b0b757b-f652-482c-946b-c9fcb47ed4be" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/11514a43-6658-4fbf-8dd4-97bd596a1d53" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ac45e1b5-1532-4744-917f-fa72c067850b" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7b55e9ce-3ad4-48df-81cd-8becba968cf6" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5aa3a71e-26cb-4f72-adcb-d6a8592510d8" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ab12dd0c-4e8e-40b0-b7af-09ee4f566351" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fafc8c13-089d-41e2-b37a-f1c7a975c0e5" />
+<img width="873" height="931" alt="image" src="https://github.com/user-attachments/assets/86a746bb-9b52-4975-9d14-2a20f106d9de" />
+<img width="873" height="931" alt="image" src="https://github.com/user-attachments/assets/fc774aa2-024b-48e1-9288-125d6c36a556" />
+<img width="891" height="932" alt="image" src="https://github.com/user-attachments/assets/ed3cca71-5ad2-47b5-b244-f6633bed770b" />
+<img width="882" height="939" alt="image" src="https://github.com/user-attachments/assets/db251034-7202-44c2-a17b-090a90ab94be" />
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3975632c-f3b0-4fa3-bf59-5b924a50ac26" />
+
+
+
+
+
+
+
+
+
+
+
+
+
 
