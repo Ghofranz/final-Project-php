@@ -99,3 +99,11 @@ project-root/
 ├── tables.html             # Vue Tables / Liste des commandes
 │
 └── README.md               # (ce fichier)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/212473ee-af5f-48f4-bbef-202a35ca706c" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/73b9147e-a655-4927-aa9d-8ddfd8cf4f17" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9cd8dbb1-8508-403d-a773-ece2c6e98fde" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3975632c-f3b0-4fa3-bf59-5b924a50ac26" />
+
